@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +16,9 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return view('users', [
-        'heading' => 'Users',
-        'users' => User::all(),
-    ]);
-});
+Route::get('/users', [UserController::class, 'index']);
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
      return view('dashboard');
 });
 
