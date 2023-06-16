@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users', [
+        'heading' => 'Users',
+        'users' => User::all(),
+    ]);
+});
+
+Route::get('/dashboard', function () {
+     return view('dashboard');
+});
+
+
+
+Route::get('/projects', function () {
+    return view('projects');
+});
+
+Route::get('/tasks', function () {
+    return view('tasks');
+});
+
+Route::get('/projects/{project}', function () {
+    return view('dashboard');
 });
