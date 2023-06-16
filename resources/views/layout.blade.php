@@ -41,10 +41,10 @@
         <a href="/users" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Users</a>
       </li>
       <li>
-        <a href="/tasks" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Projects</a>
+        <a href="/tasks" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tasks</a>
       </li>
       <li>
-        <a href="/projects" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tasks</a>
+        <a href="/projects" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Projects</a>
       </li>
       <li>
         <form class="inline" method="POST" action="/logout">

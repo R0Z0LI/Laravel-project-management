@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProjectController;
 use App\Models\User;
 
 
@@ -24,14 +26,16 @@ Route::get('/', function () {
 
 
 
-Route::get('/projects', function () {
-    return view('projects');
-});
+Route::get('/projects', [ProjectController::class, 'index']);
 
-Route::get('/tasks', function () {
-    return view('tasks');
-});
+Route::post('/users', [UserController::class, 'store']);
+
+Route::get('/tasks', [TaskController::class, 'index']);
 
 Route::get('/projects/{project}', function () {
     return view('dashboard');
 });
+
+Route::get('/users/create', [UserController::class, 'create']);
+
+Route::delete('/users/{user}', [UserController::class, 'destroy']);
