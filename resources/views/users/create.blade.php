@@ -4,7 +4,7 @@
 
 <form method="POST" action="/users" enctype="multipart/form-data">
     @csrf 
-<div>
+        <div>
             <div class="md:w-[400px] bg-white p-2 rounded-md">
               <div class="flex flex-col p-2">
                 <label for="name" className="pb-1 ">
@@ -59,4 +59,4 @@
             </div>
           </div>
     </form>
-    @endsection
+@endsection

@@ -18,23 +18,29 @@ use App\Models\User;
 |
 */
 
-Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/', function () {
-     return view('dashboard');
+    return view('dashboard');
 });
 
 
+Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/projects', [ProjectController::class, 'index']);
 
+Route::get('/tasks', [TaskController::class, 'index']);
+
 Route::post('/users', [UserController::class, 'store']);
 
-Route::get('/tasks', [TaskController::class, 'index']);
+//Route::post('/projects', [ProjectController::class, 'store']);
+
+Route::post('/tasks', [TaskController::class,'store']);
 
 Route::get('/projects/{project}', function () {
     return view('dashboard');
 });
+
+Route::get('/tasks/create', [TaskController::class, 'create']);
 
 Route::get('/users/create', [UserController::class, 'create']);
 
