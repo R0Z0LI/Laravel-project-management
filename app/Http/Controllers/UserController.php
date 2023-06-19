@@ -64,4 +64,9 @@ class UserController extends Controller
         return redirect()->back();
     }
     
+    public function suspend(User $user) {
+        $user->isSuspended = !$user->isSuspended;
+        $user->save();
+        return redirect()->back();
+    }
 }

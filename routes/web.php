@@ -42,4 +42,6 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 
+Route::put('/users/{user}/suspend', [UserController::class, 'suspend']);
+
 Route::delete('/users/{user:id}', [UserController::class, 'destroy']);
