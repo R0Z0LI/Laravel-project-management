@@ -82,4 +82,10 @@ class TaskController extends Controller
             'projects' => Project::all(),
         ]);
     }
+
+    public function archive(Task $task) {
+        $task->isArchived = !$task->isArchived;
+        $task->save();
+        return redirect()->back();
+    }
 }

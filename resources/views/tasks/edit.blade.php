@@ -35,19 +35,17 @@
               </div>
               <div class="flex flex-col p-2">
                 <label for="users" class="pb-1 ">
-                  User
+                    User
                 </label>
-                <select
-                  name="users"
-                  id="users"
-                >
-                  @foreach ($users as $user)
-                    <option value="{{$user->id}}">
-                        {{$user->name}}
-                    </option>
-                  @endforeach
+                <select name="users" id="users">
+                    @foreach ($users as $user)
+                        <option value="{{$user->id}}" {{ ($task->userId == $user->id) ? 'selected' : '' }}>
+                            {{$user->name}}
+                        </option>
+                    @endforeach
                 </select>
-              </div>
+            </div>
+
               <div class="flex flex-col p-2">
                 <label for="projects" class="pb-1 ">
                   Project
