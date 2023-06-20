@@ -55,3 +55,5 @@ Route::put('/tasks/{task}', [TaskController::class, 'update']);
 Route::put('/users/{user}/suspend', [UserController::class, 'suspend']);
 
 Route::delete('/users/{user:id}', [UserController::class, 'destroy']);
+
+Route::delete('/tasks/{task:id}', [TaskController::class, 'destroy']);
