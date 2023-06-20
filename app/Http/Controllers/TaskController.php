@@ -29,7 +29,37 @@ class TaskController extends Controller
             'project_id' => $formFields['projects']
         ]);
     
-        return redirect()->back();
+        return redirect('/tasks');
+    }
+
+    public function edit(Task $task) {
+        return view('tasks.edit', [
+            'task' => $task,
+            'users' => User::all(),
+            'projects' => Project::all(),
+        ]);
+    }
+
+    public function update(Request $request, Task $task) {
+        $formFields = $request->validate([
+            'name' =>'required|max:255',
+            'desc' =>'required|max:255',
+            'users' =>'required',
+            'projects' =>'required',
+        ]);
+    
+        $formFields['isArchived'] = false;
+    
+        $task->update([
+            'name' => $formFields['name'],
+            'description' => $formFields['desc'],
+            'isArchived' => $formFields['isArchived'],
+            'status' => 'to-do',
+            'userId' => $formFields['users'],
+            'project_id' => $formFields['projects']
+        ]);
+    
+        return redirect('/tasks');
     }
 
     public function index() {
