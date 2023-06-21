@@ -17,4 +17,10 @@ class User extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $timestamps = false;
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'user_project', 'userId', 'projectId');
+    }
+
 }

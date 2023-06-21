@@ -32,17 +32,17 @@ Route::get('/tasks', [TaskController::class, 'index']);
 
 Route::post('/users', [UserController::class, 'store']);
 
-//Route::post('/projects', [ProjectController::class, 'store']);
+Route::post('/projects', [ProjectController::class, 'store']);
 
 Route::post('/tasks', [TaskController::class,'store']);
 
-Route::get('/projects/{project}', function () {
-    return view('dashboard');
-});
+
 
 Route::get('/users/create', [UserController::class, 'create']);
 
 Route::get('/tasks/create', [TaskController::class, 'create']);
+
+Route::get('/projects/create', [ProjectController::class, 'create']);
 
 Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 
@@ -59,3 +59,7 @@ Route::put('/tasks/{task}/archive', [TaskController::class, 'archive']);
 Route::delete('/users/{user:id}', [UserController::class, 'destroy']);
 
 Route::delete('/tasks/{task:id}', [TaskController::class, 'destroy']);
+
+Route::get('/projects/{project}', function () {
+    return view('dashboard');
+});

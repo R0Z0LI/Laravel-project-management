@@ -10,13 +10,15 @@ class Project extends Model
     use HasFactory;
     protected $table = 'project';
 
-    public $incrementing = false;
+    protected $fillable = ['name', 'description', 'status', 'isArchived', 'managerId'];
+
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $timestamps = false;
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'project_user');
+        return $this->belongsToMany(User::class, 'user_project', 'projectId', 'userId');
     }
+
 }
