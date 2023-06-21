@@ -56,9 +56,13 @@ Route::put('/users/{user}/suspend', [UserController::class, 'suspend']);
 
 Route::put('/tasks/{task}/archive', [TaskController::class, 'archive']);
 
+Route::put('/projects/{project}/archive', [ProjectController::class, 'archive']);
+
 Route::delete('/users/{user:id}', [UserController::class, 'destroy']);
 
 Route::delete('/tasks/{task:id}', [TaskController::class, 'destroy']);
+
+Route::delete('/projects/{project:id}', [ProjectController::class, 'destroy']);
 
 Route::get('/projects/{project}', function () {
     return view('dashboard');

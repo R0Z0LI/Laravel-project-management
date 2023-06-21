@@ -31,7 +31,7 @@ class ProjectController extends Controller
             'manager' =>'required',
             'users' => 'array|required',
         ]);
-        //dd($formFields);
+
         $project = Project::create([
             'name' => $formFields['name'],
             'description' => $formFields['description'],
@@ -39,10 +39,23 @@ class ProjectController extends Controller
             'status' => 'active',
             'managerId' => $formFields['manager'],
         ]);
-        //dd($project->id);
-        $project->users()->sync($formFields['users']); // attaches the users to the project
+
+        $project->users()->sync($formFields['users']);
     
         return redirect('/projects');
+    }
+
+    public function destroy(Project $project) {
+        $project->users()->detach();
+        $project->delete();
+    
+        return redirect('projects');
+    }
+    
+    public function archive(Project $project) {
+        $project->isArchived = !$project->isArchived;
+        $project->save();
+        return redirect('projects');
     }
     
 }
