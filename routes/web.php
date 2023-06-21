@@ -48,9 +48,13 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 
 Route::get('/tasks/{task}/edit', [TaskController::class, 'edit']);
 
+Route::get('/projects/{project}/edit', [ProjectController::class, 'edit']);
+
 Route::put('/users/{user}', [UserController::class, 'update']);
 
 Route::put('/tasks/{task}', [TaskController::class, 'update']);
+
+Route::put('/projects/{project}', [ProjectController::class, 'update']);
 
 Route::put('/users/{user}/suspend', [UserController::class, 'suspend']);
 

@@ -57,5 +57,36 @@ class ProjectController extends Controller
         $project->save();
         return redirect('projects');
     }
+
+    public function edit(Project $project) {
+        return view('projects.edit', [
+            'project' => $project,
+            'users' => User::all(),
+            'projects' => Project::all(),
+        ]);
+    }
+
+    public function update(Request $request, Project $project) {
+        $formFields = $request->validate([
+            'name' =>'required|max:255',
+            'description' =>'required|max:255',
+            'manager' =>'required',
+            'users' => 'array|required',
+        ]);
+    
+        $formFields['isArchived'] = false;
+    
+        $project->update([
+            'name' => $formFields['name'],
+            'description' => $formFields['description'],
+            'isArchived' => false,
+            'status' => 'active',
+            'managerId' => $formFields['manager'],
+        ]);
+        $project->users()->detach();
+        $project->users()->sync($formFields['users']);
+    
+        return redirect('projects');
+    }
     
 }
