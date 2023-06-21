@@ -88,5 +88,12 @@ class ProjectController extends Controller
     
         return redirect('projects');
     }
+
+    public function details(Project $project) {
+        return view('projects.details', [
+            'project' => $project,
+            'tasks' => Task::all(),
+        ]);
+    }
     
 }

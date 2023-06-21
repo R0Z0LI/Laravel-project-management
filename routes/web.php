@@ -68,6 +68,8 @@ Route::delete('/tasks/{task:id}', [TaskController::class, 'destroy']);
 
 Route::delete('/projects/{project:id}', [ProjectController::class, 'destroy']);
 
+Route::get('/projects/{project:id}/details', [ProjectController::class, 'details']);
+
 Route::get('/projects/{project}', function () {
     return view('dashboard');
 });

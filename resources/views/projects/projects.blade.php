@@ -10,7 +10,7 @@
 <a href="/projects/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Add Project</a>
 @foreach($projects as $project)
     <div class="p-3 md:grid gap-4 border-2 border-black">
-        <h2>{{$project['name']}}</h2>
+        <a href="/projects/{{$project['id']}}/details">{{$project['name']}}</a>
         <p>{{$project['description']}}</p>
         <p>{{$project['id']}}</p>
         <form method="POST" action="/projects/{{$project['id']}}">
