@@ -19,7 +19,9 @@ use App\Models\User;
 */
 
 Route::group(['middleware' => 'auth'], function() {
-    
+    Route::get('/dashboard', [UserController::class, 'dashboard']);
+
+    Route::post('/logout', [UserController::class, 'logout']);
 });
 
 Route::group(['middleware' => 'admin'], function() {
@@ -67,7 +69,6 @@ Route::group(['middleware' => 'admin'], function() {
     Route::delete('/projects/{project:id}', [ProjectController::class, 'destroy']);
 
     Route::get('/projects/{project:id}/details', [ProjectController::class, 'details']);
-    Route::post('/logout', [UserController::class, 'logout']);
 });
 
 Route::get('/', [UserController::class, 'login']);

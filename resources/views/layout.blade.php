@@ -31,29 +31,31 @@
     <ul class="flex space-x-6 mr-6 text-lg">
       @auth
       <li>
-        <span class="font-bold uppercase">
-          Welcome {{auth()->user()->name}}
-        </span>
+          <span class="font-bold uppercase">
+              Welcome {{ auth()->user()->name }}
+          </span>
       </li>
       <li>
-        <a href="/" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Dashboard</a>
+          <a href="/" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Dashboard</a>
       </li>
+      @if (auth()->user()->isAdmin)
+          <li>
+              <a href="/users" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Users</a>
+          </li>
+          <li>
+              <a href="/tasks" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tasks</a>
+          </li>
+          <li>
+              <a href="/projects" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Projects</a>
+          </li>
+      @endif
       <li>
-        <a href="/users" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Users</a>
-      </li>
-      <li>
-        <a href="/tasks" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tasks</a>
-      </li>
-      <li>
-        <a href="/projects" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Projects</a>
-      </li>
-      <li>
-        <form class="inline" method="POST" action="/logout">
-          @csrf
-          <button type="submit">
-            <i class="fa-solid fa-door-closed"></i> Logout
-          </button>
-        </form>
+          <form class="inline" method="POST" action="/logout">
+              @csrf
+              <button type="submit">
+                  <i class="fa-solid fa-door-closed"></i> Logout
+              </button>
+          </form>
       </li>
       @endauth
     </ul>
