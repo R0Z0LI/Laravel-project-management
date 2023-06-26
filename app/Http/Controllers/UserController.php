@@ -23,10 +23,19 @@ class UserController extends Controller
         if(auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/tasks.tasks');
+            return redirect('tasks');
         } else {
             dd('Authentication failed');
         }
+    }
+
+    public function logout(Request $request) {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+
+        return redirect('/');
     }
 
     public function index() {
