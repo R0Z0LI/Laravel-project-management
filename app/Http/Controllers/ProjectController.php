@@ -95,5 +95,15 @@ class ProjectController extends Controller
             'tasks' => Task::all(),
         ]);
     }
+
+    public function status(Project $project, Request $request) {
+        $newStatus = $request->input('status');
+        $project->status = $newStatus;
+        $project->save();
+
+
+
+        return redirect('/projects');
+    }
     
 }

@@ -65,6 +65,8 @@ Route::group(['middleware' => 'admin'], function() {
 
     Route::put('/projects/{project}/archive', [ProjectController::class, 'archive']);
 
+    Route::put('projects/{project}/status', [ProjectController::class, 'status']);
+
     Route::delete('/users/{user:id}', [UserController::class, 'destroy']);
 
     Route::delete('/tasks/{task:id}', [TaskController::class, 'destroy']);

@@ -19,6 +19,21 @@
             <button>Delete</button>
         </form>
         <a href="/projects/{{$project['id']}}/edit">Edit</a>
+        <form method="POST" action="/projects/{{ $project->id }}/status" id="project-status-form">
+            @csrf
+            @method('PUT')
+            
+            <label for="status">Status:</label>
+            <select name="status" id="status" onchange="document.getElementById('project-status-form').submit()">
+                @foreach (\App\Enums\ProjectStatus::values() as $status)
+                    <option value="{{ $status }}" {{ $project->status === $status ? 'selected' : '' }}>
+                        {{ ucfirst($status) }}
+                    </option>
+                @endforeach
+            </select>
+
+            <button type="submit" style="display: none;">Update Status</button>
+        </form>
         <form method="POST" action="/projects/{{$project['id']}}/archive">
             @csrf
             @method('PUT')
