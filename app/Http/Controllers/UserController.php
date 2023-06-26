@@ -2,12 +2,33 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\User;
 
 
 class UserController extends Controller
 {
+
+    public function login() {
+        return view('users.login');
+    }
+
+    public function authenticate(Request $request) {
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+        ]);
+
+        if(auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+
+            return redirect('/tasks.tasks');
+        } else {
+            dd('Authentication failed');
+        }
+    }
+
     public function index() {
         return view('users.users', [
             'heading' => 'Users',
@@ -33,7 +54,9 @@ class UserController extends Controller
             'password' =>'required|min:6',
             'isAdmin' => 'required|in:0,1',
         ]);
-    
+
+
+        $formFields['password'] = bcrypt($formFields['password']); //
         $formFields['lastLogin'] = now();
         $formFields['isSuspended'] = false;
         $formFields['isAdmin'] = $formFields['isAdmin'] == "1" ? true : false;

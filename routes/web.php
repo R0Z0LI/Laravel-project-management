@@ -17,12 +17,9 @@ use App\Models\User;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [UserController::class, 'login']);
 
-
-Route::get('/', function () {
-    return view('dashboard');
-});
-
+Route::post('users/authenticate', [UserController::class, 'authenticate']);
 
 Route::get('/users', [UserController::class, 'index']);
 
@@ -70,6 +67,3 @@ Route::delete('/projects/{project:id}', [ProjectController::class, 'destroy']);
 
 Route::get('/projects/{project:id}/details', [ProjectController::class, 'details']);
 
-Route::get('/projects/{project}', function () {
-    return view('dashboard');
-});
