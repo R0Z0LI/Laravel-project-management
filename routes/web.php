@@ -78,7 +78,6 @@ Route::group(['middleware' => 'admin'], function() {
 
 Route::get('/', [UserController::class, 'login']);
 
-
 Route::post('users/authenticate', [UserController::class, 'authenticate']);
 
 

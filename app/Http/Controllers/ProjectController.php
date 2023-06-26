@@ -9,12 +9,26 @@ use App\Models\User;
 
 class ProjectController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+        $showArchived = $request->query('show_archived');
+        
+        if ($showArchived) {
+            $projects = Project::all();
+        } else {
+            $projects = Project::where('isArchived', false)->get();
+        }
+        
+        $buttonLabel = $showArchived ? 'Hide Archived' : 'Show Archived';
+        
         return view('projects.projects', [
             'heading' => 'Projects',
-            'projects' => Project::all(),
+            'projects' => $projects,
+            'buttonLabel' => $buttonLabel,
+            'showArchived' => $showArchived, // Add this line
         ]);
     }
+
+
 
     public function create() {
         return view('projects.create', [
