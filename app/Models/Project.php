@@ -21,4 +21,13 @@ class Project extends Model
         return $this->belongsToMany(User::class, 'user_project', 'projectId', 'userId');
     }
 
+    public function manager() {
+        return $this->belongsTo(User::class, 'managerId');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Tasks::class, 'project_id');
+    }
+
 }

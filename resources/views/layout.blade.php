@@ -36,7 +36,7 @@
           </span>
       </li>
       <li>
-          <a href="/" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Dashboard</a>
+          <a href="/dashboard" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Dashboard</a>
       </li>
       @if (auth()->user()->isAdmin)
           <li>

@@ -88,4 +88,15 @@ class TaskController extends Controller
         $task->save();
         return redirect()->back();
     }
+
+    public function status(Task $task, Request $request) {
+        $newStatus = $request->input('status');
+        $task->status = $newStatus;
+        $task->save();
+
+
+
+        return redirect('/tasks');
+    }
+
 }

@@ -16,4 +16,12 @@ class Task extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $timestamps = false;
+
+    public function users() {
+        return $this->belongsTo(User::class, 'userId');
+    }
+
+    public function userprojectss() {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
 }

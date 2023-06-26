@@ -24,6 +24,16 @@ class User extends Model implements Authenticatable
         return $this->belongsToMany(Project::class, 'user_project', 'userId', 'projectId');
     }
 
+    public function managed() 
+    {
+        return $this->hasMany(Projects::class, 'managerId');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Tasks::class, 'userId');
+    }
+
     public function getAuthIdentifierName()
     {
         return 'id';

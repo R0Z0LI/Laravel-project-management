@@ -19,6 +19,9 @@ use App\Models\User;
 */
 
 Route::group(['middleware' => 'auth'], function() {
+
+    Route::put('tasks/{task}/status', [TaskController::class, 'status']);
+
     Route::get('/dashboard', [UserController::class, 'dashboard']);
 
     Route::post('/logout', [UserController::class, 'logout']);
