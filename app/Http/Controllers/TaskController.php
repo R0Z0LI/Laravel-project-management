@@ -68,10 +68,21 @@ class TaskController extends Controller
         return redirect('/tasks');
     }
 
-    public function index() {
+    public function index(Request $request) {
+        $showArchived = $request->query('show_archived');
+        
+        if ($showArchived) {
+            $tasks = Task::all();
+        } else {
+            $tasks = Task::where('isArchived', false)->get();
+        }
+        
+        $buttonLabel = $showArchived ? 'Hide Archived' : 'Show Archived';
+        
         return view('tasks.tasks', [
-            'heading' => 'Tasks',
-            'tasks' => Task::all(),
+            'tasks' => $tasks,
+            'buttonLabel' => $buttonLabel,
+            'showArchived' => $showArchived,
         ]);
     }
 

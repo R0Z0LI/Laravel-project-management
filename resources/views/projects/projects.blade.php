@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-<h1>{{$heading}}</h1>
 
 @if(count($projects) == 0)
 <p>No Project found.</p>
