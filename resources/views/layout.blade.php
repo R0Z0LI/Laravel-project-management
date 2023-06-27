@@ -25,28 +25,29 @@
   <title>Project Management</title>
 </head>
 
-<body class="mb-48">
-<nav class="flex justify-between items-center mb-4">
+<body class="">
+@auth
+<nav class="flex justify-between items-center mb-4 p-4 bg-blue-600">
     <a href="/"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
-      @auth
-      <li>
+      <li class="self-start">
           <span class="font-bold uppercase">
               Welcome {{ auth()->user()->name }}
           </span>
       </li>
       <li>
-          <a href="/dashboard" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Dashboard</a>
+          <a href="/dashboard" class="hover:text-laravel"><i class="fa-solid fa-clipboard"></i> Dashboard</a>
       </li>
       @if (auth()->user()->isAdmin)
           <li>
-              <a href="/users" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Users</a>
+              <a href="/users" class="hover:text-laravel"><i class="fa-solid fa-user"></i> Users</a>
           </li>
           <li>
-              <a href="/tasks" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tasks</a>
+              <a href="/tasks" class="hover:text-laravel"><i class="fa-solid fa-list"></i> Tasks</a>
           </li>
           <li>
-              <a href="/projects" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Projects</a>
+              <a href="/projects" class="hover:text-laravel">
+              <i class="fa-solid fa-file"></i> Projects</a>
           </li>
       @endif
       <li>
@@ -57,9 +58,9 @@
               </button>
           </form>
       </li>
-      @endauth
     </ul>
   </nav>
+  @endauth
   @yield('content')
   
 </body>
