@@ -40,10 +40,13 @@ class UserController extends Controller
     }
 
     public function dashboard() {
-        return view('dashboard', [
-            'tasks' => Task::all(),
-        ]);
-    }
+    $tasks = Task::where('userId', auth()->id())->get();
+
+    return view('dashboard', [
+        'tasks' => $tasks,
+    ]);
+}
+
 
     public function index() {
         return view('users.users', [
