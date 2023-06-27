@@ -9,10 +9,10 @@
     <form method="GET" action="/projects">
         @csrf
         <input type="hidden" name="show_archived" value="{{ !$showArchived }}">
-        <button class="bg-blue-600 text-black py-2 px-5">{{ $buttonLabel }}</button>
+        <button class="bg-blue-600 text-black py-2 px-5 hover:text-laravel">{{ $buttonLabel }}</button>
     </form>
     <p class="font-bold uppercase py-2 px-5">Projects</p>
-    <a href="/projects/create" class="bg-blue-600 text-black py-2 px-5">Add Project</a>
+    <a href="/projects/create" class="bg-blue-600 text-black py-2 px-5 hover:text-laravel">Add Project</a>
 </div>
 <div class="flex flex-wrap justify-evenly">
     @foreach($projects as $project)
@@ -38,13 +38,17 @@
                 <form method="POST" action="/projects/{{$project['id']}}">
                     @csrf
                     @method('DELETE')
-                    <button class="mr-4 bg-blue-600 text-black py-2 px-5">Delete</button>
+                    <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel">Delete</button>
                 </form>
-                <a class="mr-4 bg-blue-600 text-black py-2 px-5" href="/projects/{{$project['id']}}/edit">Edit</a>
+                <a class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel" href="/projects/{{$project['id']}}/edit">
+                    Edit
+                </a>
                 <form method="POST" action="/projects/{{$project['id']}}/archive">
                     @csrf
                     @method('PUT')
-                    <button class="mr-4 bg-blue-600 text-black py-2 px-5">{{ $project['isArchived'] ? 'Activate' : 'Archive' }}</button>
+                    <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel">
+                        {{ $project['isArchived'] ? 'Activate' : 'Archive' }}
+                    </button>
                 </form>
             </div>
         </div>
