@@ -52,7 +52,7 @@
       <li>
           <form class="inline" method="POST" action="/logout">
               @csrf
-              <button type="submit">
+              <button type="submit" class="hover:text-laravel">
                   <i class="fa-solid fa-door-closed"></i> Logout
               </button>
           </form>
