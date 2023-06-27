@@ -27,10 +27,9 @@
 
 <body class="">
 @auth
-<nav class="flex justify-between items-center mb-4 p-4 bg-blue-600">
-    <a href="/"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
-    <ul class="flex space-x-6 mr-6 text-lg">
-      <li class="self-start">
+<nav class="mb-4 p-4 bg-blue-600">
+    <ul class="flex space-x-6 mr-6 text-lg flex justify-end">
+      <li class="justify-self-start">
           <span class="font-bold uppercase">
               Welcome {{ auth()->user()->name }}
           </span>
