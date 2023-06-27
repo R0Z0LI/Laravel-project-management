@@ -79,7 +79,7 @@ class UserController extends Controller
     
         User::create($formFields);
     
-        return redirect()->back();
+        return redirect('users');
     }
 
     public function edit(User $user) {
@@ -100,12 +100,12 @@ class UserController extends Controller
         $formFields['isAdmin'] = $formFields['isAdmin'] == "1"? true : false;
 
         $user->update($formFields);
-        return redirect()->back();
+        return redirect('users');
     }
     
     public function suspend(User $user) {
         $user->isSuspended = !$user->isSuspended;
         $user->save();
-        return redirect()->back();
+        return redirect('users');
     }
 }
