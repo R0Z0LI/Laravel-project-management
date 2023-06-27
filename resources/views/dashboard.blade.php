@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="m-4">
-    <p class="font-bold uppercase">Your Tasks</p>
+<p class="ml-4 font-bold uppercase">Your Tasks</p>
+<div class="flex flex-wrap justify-evenly">
     @foreach ($tasks as $task)
-        <div class="rounded-md border-blue-500 border-4 p-2">
+        <div class="border-black border-2 p-2">
         @if ($task->userId == auth()->id())
             <h2>Task: {{$task['name']}}</h2>
             <p>Description: {{$task['description']}}</p>
