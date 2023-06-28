@@ -104,9 +104,12 @@ class ProjectController extends Controller
     }
 
     public function details(Project $project) {
+
+        $tasks = Task::where('project_id', $project->id)->get();
+
         return view('projects.details', [
             'project' => $project,
-            'tasks' => Task::all(),
+            'tasks' => $tasks,
         ]);
     }
 

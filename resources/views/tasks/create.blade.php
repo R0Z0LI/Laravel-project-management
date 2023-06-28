@@ -55,7 +55,7 @@
                 >
                   @foreach ($projects as $project)
                     <option value="{{$project->id}}">
-                      {{$project->name}}, {{$project->id}}
+                      {{$project->name}}
                     </option>
                   @endforeach
                 </select>
