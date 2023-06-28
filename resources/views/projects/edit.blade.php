@@ -3,7 +3,7 @@
 @section('content')
 
 <form method="POST" action="/projects/{{$project->id}}" enctype="multipart/form-data">
-    @csrf 
+    @csrf
     @method('PUT')
     <div>
         <div class="md:w-[400px] bg-white p-2 rounded-md">
@@ -11,40 +11,23 @@
                 <label for="name" class="pb-1">
                     Name
                 </label>
-                <input
-                    class="border-2 border-black w-60 rounded-lg p-1"
-                    type="string"
-                    required
-                    id="name"
-                    name="name"
-                    value="{{ $project->name }}"
-                />
+                <input class="border-2 border-black w-60 rounded-lg p-1" type="string" required id="name" name="name" value="{{ $project->name }}" />
             </div>
             <div class="flex flex-col p-2">
                 <label for="description" class="pb-1">
                     Description
                 </label>
-                <input
-                    class="border-2 border-black w-60 rounded-lg p-1"
-                    type="string"
-                    required
-                    id="email"
-                    name="description"
-                    value="{{ $project->description }}"
-                />
+                <input class="border-2 border-black w-60 rounded-lg p-1" type="string" required id="email" name="description" value="{{ $project->description }}" />
             </div>
             <div class="flex flex-col p-2">
                 <label for="manager" class="pb-1">
                     Manager
                 </label>
-                <select
-                    name="manager"
-                    id="manager"
-                >
+                <select name="manager" id="manager">
                     @foreach ($users as $user)
-                        <option value="{{$user->id}}" {{ ($project->managerId == $user->id) ? 'selected' : '' }}>
-                            {{$user->name}}
-                        </option>
+                    <option value="{{$user->id}}" {{ ($project->managerId == $user->id) ? 'selected' : '' }}>
+                        {{$user->name}}
+                    </option>
                     @endforeach
                 </select>
             </div>
@@ -54,16 +37,11 @@
                 </label>
                 <div>
                     @foreach ($users as $user)
-                        <div>
-                            <input
-                                type="checkbox"
-                                id="users-{{ $user->id }}"
-                                name="users[]"
-                                value="{{ $user->id }}"
-                                @if($project->users->contains($user->id)) checked @endif
-                            />
-                            <label for="users-{{ $user->id }}">{{ $user->name }}</label>
-                        </div>
+                    <div>
+                        <input type="checkbox" id="users-{{ $user->id }}" name="users[]" value="{{ $user->id }}" @if($project->users->contains($user->id)) checked @endif
+                        />
+                        <label for="users-{{ $user->id }}">{{ $user->name }}</label>
+                    </div>
                     @endforeach
                 </div>
             </div>

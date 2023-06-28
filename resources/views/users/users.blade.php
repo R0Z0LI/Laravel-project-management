@@ -13,7 +13,7 @@
     </div>
     <div class="flex flex-wrap justify-evenly">
         @foreach($users as $user)
-            <x-user-card :user="$user"/>
+        <x-user-card :user="$user" />
         @endforeach
     </div>
 </div>

@@ -16,7 +16,7 @@
 </div>
 <div class="flex flex-wrap justify-evenly mt-2">
     @foreach($tasks as $task)
-        <x-task-admin-card :task="$task"/>
+    <x-task-admin-card :task="$task" />
     @endforeach
 </div>
 

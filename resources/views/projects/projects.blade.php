@@ -16,7 +16,7 @@
 </div>
 <div class="flex flex-wrap justify-evenly mt-2">
     @foreach($projects as $project)
-        <x-project-card :project="$project" />
+    <x-project-card :project="$project" />
     @endforeach
 </div>
 @endsection

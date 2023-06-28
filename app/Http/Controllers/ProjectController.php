@@ -7,19 +7,18 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 
-class ProjectController extends Controller
-{
+class ProjectController extends Controller {
     public function index(Request $request) {
         $showArchived = $request->query('show_archived');
-        
+
         if ($showArchived) {
             $projects = Project::all();
         } else {
             $projects = Project::where('isArchived', false)->get();
         }
-        
+
         $buttonLabel = $showArchived ? 'Hide Archived' : 'Show Archived';
-        
+
         return view('projects.projects', [
             'heading' => 'Projects',
             'projects' => $projects,
@@ -40,9 +39,9 @@ class ProjectController extends Controller
 
     public function store(Request $request) {
         $formFields = $request->validate([
-            'name' =>'required|max:255',
-            'description' =>'required|max:255',
-            'manager' =>'required',
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'manager' => 'required',
             'users' => 'array|required',
         ]);
 
@@ -55,17 +54,17 @@ class ProjectController extends Controller
         ]);
 
         $project->users()->sync($formFields['users']);
-    
+
         return redirect('/projects');
     }
 
     public function destroy(Project $project) {
         $project->users()->detach();
         $project->delete();
-    
+
         return redirect('projects');
     }
-    
+
     public function archive(Project $project) {
         $project->isArchived = !$project->isArchived;
         $project->save();
@@ -82,14 +81,14 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project) {
         $formFields = $request->validate([
-            'name' =>'required|max:255',
-            'description' =>'required|max:255',
-            'manager' =>'required',
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'manager' => 'required',
             'users' => 'array|required',
         ]);
-    
+
         $formFields['isArchived'] = false;
-    
+
         $project->update([
             'name' => $formFields['name'],
             'description' => $formFields['description'],
@@ -99,7 +98,7 @@ class ProjectController extends Controller
         ]);
         $project->users()->detach();
         $project->users()->sync($formFields['users']);
-    
+
         return redirect('projects');
     }
 
@@ -122,5 +121,4 @@ class ProjectController extends Controller
 
         return redirect('/projects');
     }
-    
 }

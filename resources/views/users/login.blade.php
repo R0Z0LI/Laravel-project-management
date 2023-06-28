@@ -11,31 +11,19 @@
                 <label for="email" class="pb-1 ">
                     Email
                 </label>
-                <input
-                class="border-2 border-black w-60 rounded-lg p-1 "
-                    type="email"
-                    required
-                    name="email"
-                    id="email"
-                />
+                <input class="border-2 border-black w-60 rounded-lg p-1 " type="email" required name="email" id="email" />
             </div>
             <div class="flex flex-col p-2">
                 <label for="password" class="pb-1 ">
                     Password
                 </label>
-                <input
-                class="border-2 border-black w-60 rounded-lg p-1 "
-                    type="password"
-                    required
-                    id="password"
-                    name="password"
-                />
+                <input class="border-2 border-black w-60 rounded-lg p-1 " type="password" required id="password" name="password" />
             </div>
             @error('email')
             <p class="text-red-500 text-sm mt-1">{{$message}}</p>
             @enderror
             <button class="border-2 border-black rounded-lg m-2 p-1 ">
-            Submit
+                Submit
             </button>
         </form>
     </div>

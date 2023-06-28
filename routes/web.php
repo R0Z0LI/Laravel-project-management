@@ -18,7 +18,7 @@ use App\Models\User;
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
 
     Route::put('tasks/{task}/status', [TaskController::class, 'status']);
 
@@ -27,19 +27,19 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/logout', [UserController::class, 'logout']);
 });
 
-Route::group(['middleware' => 'admin'], function() {
-    
+Route::group(['middleware' => 'admin'], function () {
+
     Route::get('/users', [UserController::class, 'index']);
 
     Route::get('/projects', [ProjectController::class, 'index']);
-    
+
     Route::get('/tasks', [TaskController::class, 'index']);
-    
+
     Route::post('/users', [UserController::class, 'store']);
-    
+
     Route::post('/projects', [ProjectController::class, 'store']);
-    
-    Route::post('/tasks', [TaskController::class,'store']);
+
+    Route::post('/tasks', [TaskController::class, 'store']);
 
     Route::get('/users/create', [UserController::class, 'create']);
 
@@ -79,6 +79,3 @@ Route::group(['middleware' => 'admin'], function() {
 Route::get('/', [UserController::class, 'login']);
 
 Route::post('users/authenticate', [UserController::class, 'authenticate']);
-
-
-

@@ -13,7 +13,7 @@ class User extends Model implements Authenticatable
     protected $fillable = ['name', 'email', 'password', 'isAdmin', 'lastLogin', 'isSuspended'];
 
     protected $table = 'user';
-    
+
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
@@ -24,7 +24,7 @@ class User extends Model implements Authenticatable
         return $this->belongsToMany(Project::class, 'user_project', 'userId', 'projectId');
     }
 
-    public function managed() 
+    public function managed()
     {
         return $this->hasMany(Projects::class, 'managerId');
     }
