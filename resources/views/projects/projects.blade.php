@@ -3,7 +3,7 @@
 @section('content')
 
 @if(count($projects) == 0)
-<p>No Project found.</p>
+<p class="font-bold uppercase text-center mt-10 text-xl">No Project found.</p>
 @endif
 <div class="flex flex-row justify-between mr-8 ml-8 mb-4">
     <form method="GET" action="/projects">

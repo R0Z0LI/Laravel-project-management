@@ -3,7 +3,7 @@
 @section('content')
 
 @if(count($users) == 0)
-<p>No User found.</p>
+<p class="font-bold uppercase text-center mt-10 text-xl">No User found.</p>
 @endif
 
 <div class="h-80">

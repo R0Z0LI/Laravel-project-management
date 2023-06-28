@@ -3,7 +3,7 @@
 @section('content')
 
 @if(count($tasks) == 0)
-    <p>No Task found.</p>
+    <p class="font-bold uppercase text-center mt-10 text-xl">No Task found.</p>
 @endif
 
 <div class="flex flex-wrap justify-evenly">
