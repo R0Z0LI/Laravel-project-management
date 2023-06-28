@@ -16,19 +16,25 @@ class UserController extends Controller
     }
 
     public function authenticate(Request $request) {
-        $formFields = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => 'required'
-        ]);
+    $formFields = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => 'required'
+    ]);
 
-        if(auth()->attempt($formFields)) {
-            $request->session()->regenerate();
+    if (auth()->attempt($formFields)) {
+        $request->session()->regenerate();
 
-            return redirect('dashboard');
-        } else {
-            dd('Authentication failed');
+        if (auth()->user()->isSuspended) {
+            auth()->logout();
+            return back()->withErrors(['email' => 'Your account is suspended. Please contact the administrator.']);
         }
+
+        return redirect('dashboard');
+    } else {
+        return back()->withErrors(['email' => 'Invalid credentials']);
     }
+}
+
 
     public function logout(Request $request) {
         auth()->logout();
