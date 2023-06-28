@@ -14,7 +14,7 @@
     <p class="font-bold uppercase py-2 px-5">Projects</p>
     <a href="/projects/create" class="bg-blue-600 text-black py-2 px-5 hover:text-laravel">Add Project</a>
 </div>
-<div class="flex flex-wrap justify-evenly">
+<div class="flex flex-wrap justify-evenly mt-2">
     @foreach($projects as $project)
         <div class="p-3 md:grid gap-4 border-2 border-black">
             <a href="/projects/{{$project['id']}}/details">Name: {{$project['name']}}</a>
@@ -35,10 +35,19 @@
                 <button type="submit" style="display: none;">Update Status</button>
             </form>
             <div class="flex flex-row justify-evenly">
-                <form method="POST" action="/projects/{{$project['id']}}">
+                <form method="POST" action="/projects/{{$project['id']}}" id="delete-form">
                     @csrf
                     @method('DELETE')
-                    <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel">Delete</button>
+                    <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel" onclick="showConfirmationDialog(event)">Delete</button>
+
+                    <script>
+                    function showConfirmationDialog(event) {
+                        event.preventDefault();
+                        if (confirm('Are you sure you want to delete this? This will delete all of the tasks that are linked to this project!')) {
+                            document.getElementById('delete-form').submit();
+                        }
+                    }
+                    </script>
                 </form>
                 <a class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel" href="/projects/{{$project['id']}}/edit">
                     Edit
