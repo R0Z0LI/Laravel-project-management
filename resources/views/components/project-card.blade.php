@@ -22,16 +22,10 @@
                 <form method="POST" action="/projects/{{$project['id']}}" id="delete-form">
                     @csrf
                     @method('DELETE')
-                    <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel" onclick="showConfirmationDialog(event)">Delete</button>
-
-                    <script>
-                    function showConfirmationDialog(event) {
-                        event.preventDefault();
-                        if (confirm('Are you sure you want to delete this? This will delete all of the tasks that are linked to this project!')) {
-                            document.getElementById('delete-form').submit();
-                        }
-                    }
-                    </script>
+                    <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel"
+                        onclick="return confirm('Are you sure you want to delete this? This will delete all of the tasks that are linked to this project!')">
+                        Delete
+                    </button>
                 </form>
                 <a class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel" href="/projects/{{$project['id']}}/edit">
                     Edit

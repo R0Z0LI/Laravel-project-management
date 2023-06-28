@@ -7,16 +7,8 @@
         <form method="POST" action="/users/{{$user['id']}}" id="delete-form">
             @csrf
             @method('DELETE')
-            <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel"  onclick="showConfirmationDialog(event)">Delete</button>
+            <button class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel"  onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
         </form>
-        <script>
-        function showConfirmationDialog(event) {
-            event.preventDefault();
-            if (confirm('Are you sure you want to delete this?')) {
-                document.getElementById('delete-form').submit();
-                }
-            }
-        </script>
         <a class="mr-4 bg-blue-600 text-black py-2 px-5 hover:text-laravel" href="/users/{{$user['id']}}/edit">
             Edit
         </a>
