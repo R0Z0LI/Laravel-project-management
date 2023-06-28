@@ -75,7 +75,7 @@ class UserController extends Controller
         ]);
 
 
-        $formFields['password'] = bcrypt($formFields['password']); //
+        $formFields['password'] = bcrypt($formFields['password']);
         $formFields['lastLogin'] = now();
         $formFields['isSuspended'] = false;
         $formFields['isAdmin'] = $formFields['isAdmin'] == "1" ? true : false;
@@ -98,6 +98,7 @@ class UserController extends Controller
             'password' =>'required|min:6',
             'isAdmin' =>'required|in:0,1',
         ]);
+        $formFields['password'] = bcrypt($formFields['password']);
         $formFields['lastLogin'] = now();
         $formFields['isSuspended'] = false;
         $formFields['isAdmin'] = $formFields['isAdmin'] == "1"? true : false;

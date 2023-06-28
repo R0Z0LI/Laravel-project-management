@@ -107,7 +107,7 @@ class TaskController extends Controller
 
 
 
-        return redirect('/tasks');
+        return redirect()->back();
     }
 
 }
